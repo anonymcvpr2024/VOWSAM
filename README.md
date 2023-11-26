@@ -34,16 +34,16 @@ YOLOV checkpoint can be accessed from [Here](https://github.dev/YuHengsss/YOLOV)
 
 ## Results on Multi-Object Tracking
 ### Results with Tracktor As Baseline
-|      Method       | MOTA | IDF1 | FP | FN | IDSw. | Config |                                                                    Checkpoint                                                                    |
-|:-----------------:| :--: | :--: |:--:|:--:| :---: | :----: |:------------------------------------------------------------------------------------------------------------------------------------------------:|
-|     Tracktor      | 70.5 | 65.3 | 3659 | 176118 | 1442 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-public-half.py) | [Link from MMtracking](https://download.openmmlab.com/mmtracking/mot/faster_rcnn/faster-rcnn_r50_fpn_4e_mot15-half_20210804_001040-ae733d0c.pth) |
-| **Tracktor+Ours** | 71.4 | 66.7 | 3419 | 171174 | 1344 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-private-half.py) |                  [Anonymous drive link](https://drive.google.com/file/d/1X-6L0KcWUe0smq6cML8_m8XbrZe-LhXY/view?usp=drive_link)                   |
+|      Method       | MOTA | IDF1 | FP | FN | IDSw. |                                                      Config                                                      |                                                                    Checkpoint                                                                    |
+|:-----------------:| :--: | :--: |:--:|:--:| :---: |:----------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------:|
+|     Tracktor      | 70.5 | 65.3 | 3659 | 176118 | 1442 | [config](MMtracking/mmtracking-0.11.0/configs/mot/tracktor/tracktor_faster-rcnn_r50_fpn_8e_mot20-public-half.py) | [Link from MMtracking](https://download.openmmlab.com/mmtracking/mot/faster_rcnn/faster-rcnn_r50_fpn_4e_mot15-half_20210804_001040-ae733d0c.pth) |
+| **Tracktor+Ours** | 71.4 | 66.7 | 3419 | 171174 | 1344 |         [config](MMtracking/mmtracking-0.11.0/configs/mot/tracktor/tracktor_ours_r50_fpn_8e_mot20-private-half.py)          | [Anonymous drive link](https://drive.google.com/file/d/1X-6L0KcWUe0smq6cML8_m8XbrZe-LhXY/view?usp=drive_link) |                  |
 
 ### Results with ByteTrack As Baseline
 |       Method       | HOTA | MOTA | IDF1 | FP | FN | IDSw. | Config | Checkpoint |
 |:------------------:| :--: | :--: | :--: |:--:|:--:| :---: | :----: | :--------: |
-|     ByteTrack      | 65.5 | 86.4 | 82.7 | 19176 | 63370 | 995 | [config](bytetrack_yolox_x_crowdhuman_mot17-private-half.py) | [Anonymous drive link](https://drive.google.com/file/d/12X_gqf7LcXUE8hw22k01xWb8LRjyEqP7/view?usp=drive_link) |
-| **ByteTrack+Ours** | 68.9 | 88.1 | 83.7 | 18647 | 53825 | 911 | [config](bytetrack_yolox_x_crowdhuman_mot17-private.py) | [Anonymous drive link](https://drive.google.com/file/d/1y7ZhGEHxCrhtF12yZDY-M2KXOQ2eOaIe/view?usp=drive_link) |
+|     ByteTrack      | 65.5 | 86.4 | 82.7 | 19176 | 63370 | 995 | [config](MMtracking/mmtracking-0.11.0%2Fconfigs%2Fmot%2Fbytetrack%2Fbytetrack_yolox_x_mot20-private-half_orig.py) | [Anonymous drive link](https://drive.google.com/file/d/12X_gqf7LcXUE8hw22k01xWb8LRjyEqP7/view?usp=drive_link) |
+| **ByteTrack+Ours** | 68.9 | 88.1 | 83.7 | 18647 | 53825 | 911 | [config](MMtracking/mmtracking-0.11.0%2Fconfigs%2Fmot%2Fbytetrack%2Fbytetrack_yolox_x_mot20-private-half_ours.py) | [Anonymous drive link](https://drive.google.com/file/d/1y7ZhGEHxCrhtF12yZDY-M2KXOQ2eOaIe/view?usp=drive_link) |
 
 
 
@@ -51,7 +51,7 @@ YOLOV checkpoint can be accessed from [Here](https://github.dev/YuHengsss/YOLOV)
 ## Quick Start on VOWSAM
 
 <details>
-<summary>Installation</summary>
+<summary><strong>Installation</strong></summary>
 
 Install VOWSAM from source.
 ```shell
@@ -67,13 +67,13 @@ conda activate vowsam
 
 pip install -r requirements.txt
 
-pip3 install -v -e .
+pip install -v -e .
 ```
 </details>
 
 
 <details>
-<summary>Reproduce our results on VID</summary>
+<summary><strong>Reproduce our results on VID</strong></summary>
 
 Step1. Download datasets and weights:
 
@@ -117,7 +117,7 @@ tnum indicates testing sequence number.
 
 
 <details>
-<summary>Generating GT Instance Masks from SAM</summary>
+<summary><strong>Generating GT Instance Masks from SAM</strong></summary>
 
 
 **For ImageNet VID dataset**
@@ -135,7 +135,7 @@ python tools/generate_masks_from_SAM_DET.py -f exps/vowsam/vowsam_s.py -c [path 
 </details>
 
 <details>
-<summary>Visualization</summary>
+<summary><strong>Visualization</strong></summary>
 
 * **Visualizing Generated SAM Mask and corresponding GT on the training set**
 
