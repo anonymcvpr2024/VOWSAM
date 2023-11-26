@@ -34,10 +34,10 @@ YOLOV checkpoint can be accessed from [Here](https://github.dev/YuHengsss/YOLOV)
 
 ## Results on Multi-Object Tracking
 ### Results with Tracktor As Baseline
-|      Method       | MOTA | IDF1 | FP | FN | IDSw. | Config | Checkpoint |
-|:-----------------:| :--: | :--: |:--:|:--:| :---: | :----: | :--------: |
-|     Tracktor      | 70.5 | 65.3 | 3659 | 176118 | 1442 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-public-half.py) | [detector](https://download.openmmlab.com/mmtracking/mot/faster_rcnn/faster-rcnn_r50_fpn_4e_mot15-half_20210804_001040-ae733d0c.pth) |
-| **Tracktor+Ours** | 71.4 | 66.7 | 3419 | 171174 | 1344 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-private-half.py) | [Anonymous drive link](https://drive.google.com/file/d/1X-6L0KcWUe0smq6cML8_m8XbrZe-LhXY/view?usp=drive_link) |
+|      Method       | MOTA | IDF1 | FP | FN | IDSw. | Config |                                                                    Checkpoint                                                                    |
+|:-----------------:| :--: | :--: |:--:|:--:| :---: | :----: |:------------------------------------------------------------------------------------------------------------------------------------------------:|
+|     Tracktor      | 70.5 | 65.3 | 3659 | 176118 | 1442 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-public-half.py) | [Link from MMtracking](https://download.openmmlab.com/mmtracking/mot/faster_rcnn/faster-rcnn_r50_fpn_4e_mot15-half_20210804_001040-ae733d0c.pth) |
+| **Tracktor+Ours** | 71.4 | 66.7 | 3419 | 171174 | 1344 | [config](tracktor_faster-rcnn_r50_fpn_4e_mot15-private-half.py) |                  [Anonymous drive link](https://drive.google.com/file/d/1X-6L0KcWUe0smq6cML8_m8XbrZe-LhXY/view?usp=drive_link)                   |
 
 ### Results with ByteTrack As Baseline
 |       Method       | HOTA | MOTA | IDF1 | FP | FN | IDSw. | Config | Checkpoint |
@@ -84,13 +84,13 @@ path to your datasets/ILSVRC2015/
 path to your datasets/ILSVRC/
 ```
 
-Download our COCO-style annotations for [training](https://drive.google.com/file/d/1HhE4OAcc--CpjUj69JCRXzMvIRsR4ymM/view?usp=sharing) and [video sequences](https://drive.google.com/file/d/1vJs8rLl_2oZOWCMJtk3a9ZJmdNn8cu-G/view?usp=sharing). Then, put them in these two directories:
+Download the COCO-style annotations from YOLOV for [training](https://drive.google.com/file/d/1HhE4OAcc--CpjUj69JCRXzMvIRsR4ymM/view?usp=sharing) and [video sequences](https://drive.google.com/file/d/1vJs8rLl_2oZOWCMJtk3a9ZJmdNn8cu-G/view?usp=sharing). Then, put them in these two directories:
 ```shell
 annotations/vid_train_coco.json
 yolox/data/dataset/train_seq.npy
 ```
 
-Change the data_dir in exp files to [path to your datasets] and Download our weights.
+Change the data_dir in exp files to [path to your datasets] and Download our checkpoints.
 
 Step2. Generate predictions and convert them to IMDB style for evaluation.
 
@@ -122,15 +122,13 @@ tnum indicates testing sequence number.
 
 **For ImageNet VID dataset**
 
-Experiment file is needed to set other parameters such as data set path. 
-Currently, both generate mask scripts only run with batch_size = 1
+Experiment file is needed to set other parameters such as data set path.
 ```shell
 python tools/generate_masks_from_SAM.py -f exps/vowsam/vowsam_s.py -c [path to SAM checkpoint]
 ```
 
 **For ImageNet DET dataset**
 
-Specific experiment file (yolox_DET_mask_generation_SAM.py) is needed to set other parameters such as data set path.
 ```shell
 python tools/generate_masks_from_SAM_DET.py -f exps/vowsam/vowsam_s.py -c [path to SAM checkpoint]
 ```
@@ -141,16 +139,14 @@ python tools/generate_masks_from_SAM_DET.py -f exps/vowsam/vowsam_s.py -c [path 
 
 * **Visualizing Generated SAM Mask and corresponding GT on the training set**
 
-    This command will generate N images at mmtrack_stroage/VowSAM dir. N = batch_size or global frames
     ```shell
     python tools/visualize_vid_train.py -f [experiment_name_file]
     ```
   
 
 * **Visualizing Predictions (bbox, class label) on any video**
-  The script takes experiment  file, checkpoint,  and path to video as mp4.
 
-    This script writes a Video (.mp4) or images in the same directory from where model checkpoint is taken.
+  The script takes experiment  file, checkpoint,  and path to video as mp4 and writes a Video (.mp4) or images in the same directory where model checkpoint is located.
     ```shell
     python tools/vid_demo.py -f [experiment_name_file] -c ..[checkpoint_path] --path [video_file]
     ```
@@ -163,7 +159,7 @@ python tools/generate_masks_from_SAM_DET.py -f exps/vowsam/vowsam_s.py -c [path 
 ## Acknowledgements
 
 <details><summary> <b>Expand</b> </summary>
-We sincerely thank the efforts of the authors from following works: 
+We sincerely thank the efforts of the Authors/Contributors from following works: 
 
 * [https://github.com/open-mmlab/mmtracking](https://github.com/open-mmlab/mmtracking)
 * [https://github.com/facebookresearch/segment-anything](https://github.com/facebookresearch/segment-anything)
