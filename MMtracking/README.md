@@ -30,17 +30,19 @@ For dataset preparation, please refer to [dataset.md](mmtracking-0.11.0/docs/en/
 |   ByteTrack    | YOLOX-X | half-train | half-val | N | 65.5 | 86.4 | 82.7 | 19176 | 63370 | 995 | [config](mmtracking-0.11.0%2Fconfigs%2Fmot%2Fbytetrack%2Fbytetrack_yolox_x_mot20-private-half_orig.py) | [Anonymous drive link](https://drive.google.com/file/d/12X_gqf7LcXUE8hw22k01xWb8LRjyEqP7/view?usp=drive_link)  |
 | **ByteTrack+Ours** | YOLOX-X+Ours | half-train | half-val | N | 68.9 | 88.1 | 83.7 | 18647 | 53825 | 911 | [config](mmtracking-0.11.0%2Fconfigs%2Fmot%2Fbytetrack%2Fbytetrack_yolox_x_mot20-private-half_ours.py) | [Anonymous drive link](https://drive.google.com/file/d/1y7ZhGEHxCrhtF12yZDY-M2KXOQ2eOaIe/view?usp=drive_link) |
 
-## Evaluation
-
-To evaluate run:
-```
-dist_test.sh configs/{configure-file} /path/to/checkpoint_file 4 --out results.pkl --eval bbox segm
-```
-
-
 ## Training
 
 To train run:
 ```
-dist_train.sh configs/{configure-file} 4
+bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} [optional arguments]
 ```
+
+## Evaluation
+
+To evaluate run:
+```
+python tools/test.py ${CONFIG_FILE} ${Checkpoint} --eval bbox track
+```
+
+
+
